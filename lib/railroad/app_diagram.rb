@@ -79,9 +79,7 @@ class AppDiagram
 
   # Extract class name from filename
   def extract_class_name(filename)
-    #filename.split('/')[2..-1].join('/').split('.').first.camelize
-    # Fixed by patch from ticket #12742
-    File.basename(filename).chomp(".rb").camelize
+    filename[%r{app/(controllers|models)/(.*)\.rb$}, 2].camelize
   end
 
 end # class AppDiagram
